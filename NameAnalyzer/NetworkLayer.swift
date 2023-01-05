@@ -9,7 +9,7 @@ import Foundation
 
 class NetworkLayer {
     
-    var identifiableuContries = [IdentifiableCountry]()
+    var results = [Country]()
     
     func fetchCountries(name: String) async {
         guard let url = URL(string: Constants().url + name)
@@ -19,17 +19,9 @@ class NetworkLayer {
             return
         }
         do {
-            identifiableuContries = [IdentifiableCountry]()
-            var countryHere: IdentifiableCountry
             let (data, _) = try await URLSession.shared.data(from: url)
             let array: Countries = try! JSONDecoder().decode(Countries.self, from: data)
-            let results = array.country
-            for i in 0..<results.count {
-                
-                countryHere = IdentifiableCountry(countryRank: i, countryCode: results[i].country_id)
-                
-                identifiableuContries.append(countryHere)
-            }
+            results = array.country
         }
         catch {
             print("JSON Error")

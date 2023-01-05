@@ -18,14 +18,13 @@ class ViewModel: ObservableObject {
             
             await networkLayer.fetchCountries(name: name)
             countries = [IdentifiableCountry]()
-                for i in 0..<self.networkLayer.identifiableuContries.count {
+                for i in 0..<self.networkLayer.results.count {
                     
-                    let countryName = CountryDecoder().decodeCountry(countryCode: networkLayer.identifiableuContries[i].countryCode)
+                    let countryName = CountryDecoder().decodeCountry(countryCode: networkLayer.results[i].country_id)
                     
                     country = IdentifiableCountry(countryRank: i, countryCode: countryName)
                     
                     countries.append(country)
-                    print(countries)
                     if i >= 2 {
                         return
                     }
