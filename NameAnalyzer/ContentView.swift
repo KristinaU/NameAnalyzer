@@ -16,7 +16,7 @@ struct ContentView: View {
     @FocusState private var nameIsShown: Bool
     var body: some View {
         VStack{
-            Text("Find your origin by your name!")
+            Text("Enter your name and press \"Return\"")
             TextField(
                 "Your name",
                 text: $name
@@ -30,7 +30,7 @@ struct ContentView: View {
             .border(.secondary)
             .fixedSize()
         }
-        Button("Enter your name and press \"Return\"", action: viewModel.ValidateAwait(name: name) ?? { })
+        Button("Your origin by your name:", action: viewModel.ValidateAwait(name: name) ?? { })
         VStack {
             ForEach(viewModel.countries, id: \.countryRank) {result in
                 Text(result.countryCode)
