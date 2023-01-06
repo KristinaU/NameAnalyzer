@@ -11,7 +11,7 @@ class ViewModel: ObservableObject {
     let networkLayer = NetworkLayer()
     var countries = [IdentifiableCountry]()
     
-    func ValidateAwait(name: String) -> (() -> Void)? {
+    func validateAwait(name: String) -> (() -> Void)? {
         
         Task {
             var country = IdentifiableCountry(countryRank: 0, countryCode: "Unknown yet")

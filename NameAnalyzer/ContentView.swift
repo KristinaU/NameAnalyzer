@@ -30,7 +30,7 @@ struct ContentView: View {
             .border(.secondary)
             .fixedSize()
         }
-        Button("Your origin by your name:", action: viewModel.ValidateAwait(name: name) ?? { })
+        Button("Your origin by your name:", action: viewModel.validateAwait(name: name) ?? { })
         VStack {
             ForEach(viewModel.countries, id: \.countryRank) {result in
                 Text(result.countryCode)
